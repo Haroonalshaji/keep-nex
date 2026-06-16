@@ -1,21 +1,28 @@
-import { Link } from "@tanstack/react-router";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, Hexagon } from "lucide-react";
 
 const nav = [
-  { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group">
           <div className="relative">
             <Hexagon className="h-7 w-7 text-primary" strokeWidth={1.5} />
             <div className="absolute inset-0 blur-md bg-primary/40 rounded-full group-hover:bg-primary/70 transition" />
@@ -28,11 +35,13 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-1">
           {nav.map((n) => (
             <Link
-              key={n.to}
-              to={n.to}
-              className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-md transition-colors"
-              activeProps={{ className: "px-4 py-2 text-sm text-foreground rounded-md bg-surface-elevated" }}
-              activeOptions={{ exact: n.to === "/" }}
+              key={n.href}
+              href={n.href}
+              className={
+                isActive(n.href)
+                  ? "px-4 py-2 text-sm text-foreground rounded-md bg-surface-elevated"
+                  : "px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-md transition-colors"
+              }
             >
               {n.label}
             </Link>
@@ -41,7 +50,7 @@ export function Header() {
 
         <div className="hidden md:block">
           <Link
-            to="/contact"
+            href="/contact"
             className="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary-glow transition-colors"
           >
             Get a quote
@@ -62,8 +71,8 @@ export function Header() {
           <div className="px-6 py-4 flex flex-col gap-2">
             {nav.map((n) => (
               <Link
-                key={n.to}
-                to={n.to}
+                key={n.href}
+                href={n.href}
                 onClick={() => setOpen(false)}
                 className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
               >
@@ -71,7 +80,7 @@ export function Header() {
               </Link>
             ))}
             <Link
-              to="/contact"
+              href="/contact"
               onClick={() => setOpen(false)}
               className="mt-2 px-3 py-2 rounded-md bg-primary text-primary-foreground text-center text-sm font-medium"
             >

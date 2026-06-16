@@ -1,7 +1,9 @@
+"use client";
+
 import { motion } from "framer-motion";
 import type { Service } from "@/lib/services";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 
 export function ServiceCard({ service, index }: { service: Service; index: number }) {
   const Icon = service.icon;
@@ -27,8 +29,7 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         </div>
 
         <Link
-          to="/services"
-          hash={service.slug}
+          href={`/services#${service.slug}`}
           className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary group/link"
         >
           Learn more

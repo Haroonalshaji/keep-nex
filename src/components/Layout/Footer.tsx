@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import Link from "next/link";
 import { Hexagon, Mail, Phone, MapPin } from "lucide-react";
 import { services } from "@/lib/services";
 
@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t border-border/60 bg-surface/40 mt-24">
       <div className="mx-auto max-w-7xl px-6 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <Link to="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <Hexagon className="h-6 w-6 text-primary" strokeWidth={1.5} />
             <span className="font-display font-bold text-lg">
               Keep<span className="text-primary">Nex</span>
@@ -30,8 +30,7 @@ export function Footer() {
             {services.map((s) => (
               <li key={s.slug}>
                 <Link
-                  to="/services"
-                  hash={s.slug}
+                  href={`/services#${s.slug}`}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   {s.title}
@@ -44,9 +43,9 @@ export function Footer() {
         <div>
           <div className="text-sm font-semibold text-foreground mb-4">Company</div>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/about" className="text-muted-foreground hover:text-primary">About</Link></li>
-            <li><Link to="/contact" className="text-muted-foreground hover:text-primary">Contact</Link></li>
-            <li><Link to="/services" className="text-muted-foreground hover:text-primary">All services</Link></li>
+            <li><Link href="/about" className="text-muted-foreground hover:text-primary">About</Link></li>
+            <li><Link href="/contact" className="text-muted-foreground hover:text-primary">Contact</Link></li>
+            <li><Link href="/services" className="text-muted-foreground hover:text-primary">All services</Link></li>
           </ul>
         </div>
       </div>
