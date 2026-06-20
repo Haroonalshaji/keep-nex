@@ -24,7 +24,7 @@ export function HomePage() {
             >
               <div className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface/60 backdrop-blur px-3 py-1 text-xs font-medium text-muted-foreground">
                 <Sparkles className="h-3.5 w-3.5 text-primary" />
-                Trusted by 200+ enterprises across 4 continents
+                Trusted by 4+ enterprises across 2 continents
               </div>
 
               <h1 className="mt-6 font-display text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
@@ -59,8 +59,8 @@ export function HomePage() {
 
               <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
                 {[
-                  { v: "200+", l: "Enterprise clients" },
-                  { v: "12M+", l: "Pages digitized" },
+                  { v: "4+", l: "Enterprise clients" },
+                  { v: "1M+", l: "Pages digitized" },
                   { v: "99.98%", l: "Uptime SLA" },
                   { v: "24/7", l: "Global support" },
                 ].map((s, i) => (
