@@ -22,7 +22,7 @@ export function AboutPage() {
             A small team of <span className="text-gradient-primary">serious operators</span>, building IT that just works.
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            KeepNex was founded in 2014 by a group of enterprise IT leaders who
+            KeepNex was founded in 2021 by a group of enterprise IT leaders who
             were tired of seeing big consultancies bill big and deliver small.
             Today we run document, infrastructure, security and software
             programs for clients across finance, healthcare, government and
